@@ -1,17 +1,18 @@
 # Restaurant Reservation App
 
-> Mobile frontend app for managing restaurant reservations – built with **React Native & Expo**.
+> Mobile-first εφαρμογή για κρατήσεις σε εστιατόρια, με React Native + Express + MariaDB.
 
 ---
 
-## Στόχος
+## Δυνατότητες
 
-Ανάπτυξη του Frontend μέρους μιας εφαρμογής κρατήσεων εστιατορίων με έμφαση σε:
-
--  Διαχείριση κατάστασης (Context API)
--  Επικοινωνία με backend (axios & JWT)
--  Τοπική αποθήκευση token (AsyncStorage)
--  Προστατευμένες οθόνες βάσει authentication
+- Δημιουργία λογαριασμού και login με JWT authentication  
+- Προβολή λίστας εστιατορίων  
+- Κράτηση τραπεζιού με επιλογή ώρας & ημερομηνίας  
+- Δυνατότητα προβολής και διαγραφής κρατήσεων από το προφίλ  
+- Υποστήριξη Web & Mobile μέσω Expo  
+- Προστατευμένες διαδρομές με Context API  
+- Σύνδεση με βάση δεδομένων MariaDB  
 
 ---
 
@@ -28,31 +29,55 @@
 
 ## 📂 Δομή Φακέλων
 mobile-app/
-├── api/                  # axios instance με interceptor για JWT
-│   └── client.js
-├── context/              # authentication state & λογική login/logout
-│   └── AuthContext.js
-├── navigation/           # προστατευμένες και δημόσιες διαδρομές
-│   └── AppNavigator.js
-├── screens/              # βασικές οθόνες της εφαρμογής
-│   ├── LoginScreen.js
-│   ├── RegisterScreen.js
-│   ├── RestaurantListScreen.js
-│   ├── ReservationFormScreen.js
-│   └── ProfileScreen.js
-├── App.js                # αρχικό σημείο εκκίνησης εφαρμογής
-└── README.md             # οδηγίες χρήσης και εκκίνησης
+├── api/ # axios instance με JWT interceptor
+│ └── client.js
+├── backend/ # Express server & routes
+│ ├── routes/
+│ ├── middleware/
+│ ├── db.js # MariaDB pool config
+│ └── server.js
+├── context/ # AuthContext για login/logout state
+├── navigation/ # AppNavigator για routes
+├── screens/ # Οθόνες εφαρμογής
+│ ├── LoginScreen.js
+│ ├── RegisterScreen.js
+│ ├── RestaurantListScreen.js
+│ ├── ReservationFormScreen.js
+│ ├── ReservationConfirmationScreen.js
+│ └── ProfileScreen.js
+├── styles/ # Custom styling ανά οθόνη
+├── .env # μεταβλητές περιβάλλοντος (DB credentials κ.λπ.)
+├── App.js # Entry point της εφαρμογής
+└── README.md # Τρέχον αρχείο οδηγιών
+
+yaml
+Αντιγραφή
+Επεξεργασία
 
 ---
 
 ## 🚀 Εκκίνηση
 
 ```bash
-npx create-expo-app mobile-app
+
 cd mobile-app
+npm install
 
-npm install axios @react-navigation/native @react-navigation/stack @react-native-async-storage/async-storage
-npx expo install react-native-screens react-native-safe-area-context react-native-gesture-handler react-native-reanimated
+cd backend
+node server.js
 
+cd ..
 npx expo start
+
+---
+
+Σημειώσεις:
+
+Χρησιμοποιήθηκε Expo Go για mobile testing
+
+Σύνδεση με MariaDB μέσω mariadb package
+
+Τα tokens αποθηκεύονται με AsyncStorage
+
+Υποστηρίζονται alerts και modals για Web & Mobile
 

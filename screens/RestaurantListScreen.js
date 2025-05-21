@@ -14,6 +14,8 @@ import { AuthContext } from '../context/AuthContext';
 import client from '../api/client';
 import { useNavigation } from '@react-navigation/native';
 
+
+
 import burgerKing from '../assets/images/burger-king.jpg';
 import greekTavern from '../assets/images/greektavern.jpg';
 import pizza from '../assets/images/pizza.jpg';

@@ -30,14 +30,23 @@
 ## Δομή Φακέλων
 mobile-app/
 api/client.js 
+
 backend/routes/auth.js,reservations.js,restaurant.js 
+
 backend/middleware/auth.js
+
 backend/db.js,server.js
+
 context/AuthContext 
-navigation/AppNavigator outes
+
+navigation/AppNavigator 
+
 screens/LoginScreen.js,RegisterScreen.js,RestaurantListScreen.js,ReservationFormScreen.js,reservationConfirmationScreen.js,ProfileScreen.js
+
 .env 
+
 App.js 
+
 README.md 
 
 

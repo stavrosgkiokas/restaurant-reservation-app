@@ -80,6 +80,7 @@ export default function RestaurantListScreen() {
         placeholder="Αναζήτηση με όνομα ή τοποθεσία"
         value={searchQuery}
         onChangeText={setSearchQuery}
+        placeholderTextColor="#aaa"
       />
       <View style={Platform.OS === 'web' ? styles.grid : null}>
         {filteredRestaurants.length === 0 ? (
@@ -115,7 +116,7 @@ const styles = StyleSheet.create({
   },
   container: {
     paddingHorizontal: 15,
-    paddingTop: Platform.OS === 'web' ? 76 : 20,
+    paddingTop: Platform.OS === 'web' ? 76 : 60,
     paddingBottom: 40,
     backgroundColor: '#fff',
     flexGrow: 1,

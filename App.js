@@ -124,8 +124,8 @@ export default function App() {
       <SafeAreaProvider>
         <NavigationContainer>
           <RootNavigator />
-          <Toast />
         </NavigationContainer>
+        <Toast />
       </SafeAreaProvider>
     </AuthProvider>
   );

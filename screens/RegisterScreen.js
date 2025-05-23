@@ -14,7 +14,7 @@ import {
 import Toast from 'react-native-toast-message';
 import client from '../api/client';
 import { AuthContext } from '../context/AuthContext';
-import styles from '../styles/RegisterScreenStyles';
+import { StyleSheet } from 'react-native';
 
 export default function RegisterScreen({ navigation }) {
   const [name, setName] = useState('');
@@ -71,6 +71,7 @@ export default function RegisterScreen({ navigation }) {
           placeholder="Name"
           value={name}
           onChangeText={setName}
+          placeholderTextColor="#aaa"
           {...(Platform.OS === 'web' ? { tabIndex: 0 } : {})}
         />
 
@@ -79,6 +80,7 @@ export default function RegisterScreen({ navigation }) {
           placeholder="Email"
           value={email}
           onChangeText={setEmail}
+          placeholderTextColor="#aaa"
           autoCapitalize="none"
           keyboardType="email-address"
           {...(Platform.OS === 'web' ? { tabIndex: 0 } : {})}
@@ -90,6 +92,7 @@ export default function RegisterScreen({ navigation }) {
             placeholder="Password"
             value={password}
             onChangeText={setPassword}
+            placeholderTextColor="#aaa"
             secureTextEntry={secureText}
             autoCapitalize="none"
             {...(Platform.OS === 'web' ? { tabIndex: 0 } : {})}
@@ -151,3 +154,82 @@ export default function RegisterScreen({ navigation }) {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f2f2f2',
+    paddingHorizontal: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  formWrapper: {
+    width: '100%',
+    maxWidth: 400,
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    marginBottom: 30,
+    textAlign: 'center',
+    color: '#333',
+  },
+  input: {
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    padding: 14,
+    fontSize: 16,
+    marginBottom: 15,
+    borderWidth: 1,
+    borderColor: '#ccc',
+  },
+  button: {
+    backgroundColor: '#28a745',
+    borderRadius: 8,
+    paddingVertical: 14,
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+  linkText: {
+    textAlign: 'center',
+    color: '#007bff',
+    textDecorationLine: 'underline',
+  },
+
+  // Web modal styles
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContent: {
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 10,
+    width: 300,
+  },
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 10,
+  },
+  modalMessage: {
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  modalButtons: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  modalClose: {
+    color: '#007bff',
+    fontSize: 16,
+  },
+});

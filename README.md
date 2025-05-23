@@ -27,36 +27,23 @@
 
 ---
 
-## 📂 Δομή Φακέλων
+## Δομή Φακέλων
 mobile-app/
-├── api/ # axios instance με JWT interceptor
-│ └── client.js
-├── backend/ # Express server & routes
-│ ├── routes/
-│ ├── middleware/
-│ ├── db.js # MariaDB pool config
-│ └── server.js
-├── context/ # AuthContext για login/logout state
-├── navigation/ # AppNavigator για routes
-├── screens/ # Οθόνες εφαρμογής
-│ ├── LoginScreen.js
-│ ├── RegisterScreen.js
-│ ├── RestaurantListScreen.js
-│ ├── ReservationFormScreen.js
-│ ├── ReservationConfirmationScreen.js
-│ └── ProfileScreen.js
-├── styles/ # Custom styling ανά οθόνη
-├── .env # μεταβλητές περιβάλλοντος (DB credentials κ.λπ.)
-├── App.js # Entry point της εφαρμογής
-└── README.md # Τρέχον αρχείο οδηγιών
+api/client.js 
+backend/routes/auth.js,reservations.js,restaurant.js 
+backend/middleware/auth.js
+backend/db.js,server.js
+context/AuthContext 
+navigation/AppNavigator outes
+screens/LoginScreen.js,RegisterScreen.js,RestaurantListScreen.js,ReservationFormScreen.js,reservationConfirmationScreen.js,ProfileScreen.js
+.env 
+App.js 
+README.md 
 
-yaml
-Αντιγραφή
-Επεξεργασία
 
 ---
 
-## 🚀 Εκκίνηση
+## Εκκίνηση
 
 ```bash
 
@@ -70,6 +57,41 @@ cd ..
 npx expo start
 
 ---
+
+Ρύθμιση Βάσης Δεδομένων MariaDB
+
+mysql -u root -p
+
+Δημιουργία βάσης δεδομένων:
+
+CREATE DATABASE restaurant_reservation;
+USE restaurant_reservation;
+
+CREATE TABLE users (
+  user_id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(100) UNIQUE,
+  password VARCHAR(255)
+);
+
+CREATE TABLE restaurants (
+  restaurant_id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  location VARCHAR(100),
+  description TEXT
+);
+
+CREATE TABLE reservations (
+  reservation_id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT,
+  restaurant_id INT,
+  date DATE,
+  time TIME,
+  people_count INT,
+  FOREIGN KEY (user_id) REFERENCES users(user_id),
+  FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id)
+);
+
 
 Σημειώσεις:
 
